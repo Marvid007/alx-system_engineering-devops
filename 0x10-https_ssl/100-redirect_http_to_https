@@ -1,0 +1,25 @@
+global
+        log /dev/log    local0
+        stats socket /run/haproxy/admin.sock mode 660 level admin
+
+defaults
+        log     global
+        mode    http
+        option  httplog
+        timeout connect  10s
+        timeout client  30s
+        timeout server  30s
+
+frontend Marvid007-tech-frontend
+        bind *:80
+        bind *:443 ssl crt /etc/haproxy/certs/Marvid007.tech.pem
+        http-request redirect scheme https unless { ssl_fc }
+        http-request set-header X-Forwarded-Proto https
+        default_backend Marvid007-tech-backend
+
+backend Marvid007-tech-backend
+        balance roundrobin
+        server 453-web-01 52.86.5.224:80 check
+        server 453-web-02 54.89.179.252:80 check
+
+
