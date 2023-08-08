@@ -1,10 +1,4 @@
-
-                                                                                                                                                                word_count[word] += 1
-
-                                                                                                                                                                    if not info.get("data").get("after"):
-                                                                                                                                                                                sorted_counts = sorted(word_count.items(), key=lambda kv: kv[0])
-                                                                                                                                                                                        sorted_counts = sorted(word_count.items(),
-                                    #!/usr/bin/python3
+#!/usr/bin/python3
 """Module for task 3"""
 
 
@@ -50,8 +44,4 @@ def count_words(subreddit, word_list, word_count={}, after=None):
         [print('{}: {}'.format(k, v)) for k, v in sorted_counts if v != 0]
     else:
         return count_words(subreddit, word_list, word_count,
-                           info.get("data").get("after"))                                                                                                                                                                                           key=lambda kv: kv[1], reverse=True)
-                                                                                                                                                                                                [print('{}: {}'.format(k, v)) for k, v in sorted_counts if v != 0]
-                                                                                                                                                                                                    else:
-                                                                                                                                                                                                                return count_words(subreddit, word_list, word_count,
-                                                                                                                                                                                                                                                   info.get("data").get("after"))
+                           info.get("data").get("after"))
